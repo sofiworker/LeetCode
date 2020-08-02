@@ -1,6 +1,10 @@
 package me.sofiworker.leetcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.*;
 
 
 /**
@@ -32,5 +36,28 @@ public class No4 {
         }else {
             return (nums3[nums3.length /2] + nums3[nums3.length /2 - 1]) / 2.0;
         }
+    }
+
+    public static void main(String[] args) {
+        int a = 10;
+        int b = a;
+        a--;
+        b++;
+        System.out.println(a+"-"+b);
+        List<Integer> list = Arrays.asList(1, 2, 3, 4);
+        List<Integer> list1 = list;
+        System.out.println(list.hashCode()+"-"+list1.hashCode());
+        list.set(0, 0);
+        System.out.println(list+"-"+list1);
+        list = null;
+        System.out.println(list+"-"+list1);
+        HashMap<String, String> stringStringHashMap = new HashMap<>(16);
+        stringStringHashMap.put("111", "aaaaaaaaaa");
+
+    }
+
+    static class Aa {
+        int a = 10;
+        List<Integer> list = Arrays.asList(1, 2, 3, 4);
     }
 }

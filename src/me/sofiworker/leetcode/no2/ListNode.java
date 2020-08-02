@@ -1,4 +1,4 @@
-package me.sofiworker.leetcode.No2;
+package me.sofiworker.leetcode.no2;
 
 public class ListNode {
 

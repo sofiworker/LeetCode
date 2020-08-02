@@ -23,7 +23,7 @@ public class No14 {
                 res.append(first);
             }
         }
-        if (new String(res).equals("")){
+        if ("".equals(new String(res))){
             return new String(res);
         }else {
             return "";
