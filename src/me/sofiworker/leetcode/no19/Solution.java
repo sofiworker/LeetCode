@@ -18,12 +18,14 @@ public class Solution {
             temp = temp.next;
         }
         int index = sum - n;
-        if (index != 0) {
+        if (index > 0) {
             for (int i = 1; i < index; i++) {
                 temp1 = temp1.next;
             }
             temp1.next = temp1.next.next;
             return head;
+        }else if (index == 0) {
+            return head.next;
         }else {
             return null;
         }

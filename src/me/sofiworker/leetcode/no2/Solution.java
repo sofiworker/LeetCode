@@ -1,6 +1,11 @@
 package me.sofiworker.leetcode.no2;
 
-public class ListNode {
+public class Solution {
+
+
+}
+
+class ListNode {
 
     int val;
     ListNode next;
