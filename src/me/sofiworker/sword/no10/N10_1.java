@@ -10,10 +10,15 @@ public class N10_1 {
         if (n <= 1) {
             return n;
         }
-        return fib(n - 1) + fib(n - 2);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(fib(1000));
+        int[] result = new int[101];
+        result[0] = 0;
+        result[1] = 1;
+        for (int i = 2; i < result.length; i++) {
+            result[i] = result[i-1] + result[i-2];
+            if (result[i] > 1000000007) {
+                result[i] = result[i] % 1000000007;
+            }
+        }
+        return result[n-1];
     }
 }
