@@ -16,10 +16,9 @@ public class Solution {
         ListNode cur = head;
         ListNode pre = head;
         int count = 0;
-        while (cur.next != null) {
-            if (count == k - 1) {
+        while (cur != null) {
+            if (count >= k) {
                 pre = pre.next;
-                count = 0;
             }
             cur = cur.next;
             count++;
