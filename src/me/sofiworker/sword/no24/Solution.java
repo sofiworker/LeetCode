@@ -1,6 +1,6 @@
 package me.sofiworker.sword.no24;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @author sofiworker
@@ -70,22 +70,5 @@ public class Solution {
         }
         //返回新链表
         return newHead;
-    }
-
-    public static void main(String[] args) {
-        Hashtable<String, String> hashtable = new Hashtable<>();
-        hashtable.put("1", "a");
-        hashtable.put("2", "b");
-        hashtable.put("3", "c");
-        System.out.println(hashtable.get("1"));
-//        TreeSet<String> treeSet = new TreeSet<>();
-//        treeSet.add("a");
-//        treeSet.add("b");
-//        treeSet.add("c");
-//        System.out.println(treeSet);
-        LinkedHashMap<String, String> hashMap = new LinkedHashMap<>();
-        hashMap.put("1", "a");
-        hashMap.put("2", "b");
-        System.out.println(hashMap);
     }
 }
