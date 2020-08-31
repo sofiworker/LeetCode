@@ -12,14 +12,21 @@ public class Solution {
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        int i = 0;
-        int j = nums.length - 1;
-        int mid = (i + j) / 2;
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int mid = nums.length / 2;
         HashMap<Integer, Integer> hashMap = new HashMap<>();
-        for (; i <= mid && j >= mid; i++, j--) {
-//            if (hashMap.get(nums[i]) != null) {
-//                hashMap.putIfAbsent()
-//            }
+        for (int num : nums) {
+            Integer val = hashMap.get(num);
+            if (val == null) {
+                hashMap.put(num, 1);
+                continue;
+            }
+            if (val >= mid) {
+                return num;
+            }
+            hashMap.put(num, val+1);
         }
         return -1;
     }
