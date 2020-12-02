@@ -7,16 +7,31 @@ package me.sofiworker.sword.no29;
 public class Solution {
 
     public int[] spiralOrder(int[][] matrix) {
-        int[] result = new int[matrix.length*matrix[0].length];
-        int k = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            int j;
-            for (j = 0; j < matrix[i].length; j++) {
-                result[k++] =  matrix[i][j];
+        if (matrix == null) {
+            return new int[0];
+        }
+        int[] result = new int[matrix.length * matrix[0].length];
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int index = 0;
+        while (true) {
+            // 从左到右
+            for (int i = 0; i < col; i++) {
+                result[index++] = matrix[row][i];
             }
-            for (int l = i; l < matrix.length; l++) {
-                result[k++] = matrix[l][j];
+            // 从上到下
+            for (int j = 0; j < row; j++) {
+                result[index++] = matrix[j][col];
             }
+            // 从右到左
+            for (int k = col; k >= 0; k--) {
+                result[index++] = matrix[row][col];
+            }
+            // 从下到上
+//            for (int l = ; ;) {
+//                result[index++] = matrix[row][col];
+//            }
+            break;
         }
         return result;
     }

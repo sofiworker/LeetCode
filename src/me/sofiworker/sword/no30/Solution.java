@@ -1,7 +1,6 @@
 package me.sofiworker.sword.no30;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * @author sofiworker
@@ -11,46 +10,39 @@ public class Solution {
 
     static class MinStack {
 
-        private List<Integer> dataList;
+        private Stack<Integer> dataStack;
+        // helpStack 保存当前栈的最小值
+        private Stack<Integer> helpStack;
 
+        /** initialize your data structure here. */
         public MinStack() {
-            dataList = new ArrayList<>();
+            dataStack = new Stack<>();
+            helpStack = new Stack<>();
         }
 
         public void push(int x) {
-            dataList.add(x);
+            dataStack.push(x);
+            if (helpStack.isEmpty() || helpStack.peek() >= x) {
+                helpStack.push(x);
+            }
         }
 
         public void pop() {
-            dataList.remove(dataList.size() - 1);
+            Integer pop = dataStack.pop();
+            if (!helpStack.isEmpty() && pop.equals(helpStack.peek())) {
+                helpStack.pop();
+            }
         }
 
         public int top() {
-            return dataList.get(dataList.size() - 1);
+            return dataStack.peek();
         }
 
         public int min() {
-            if (dataList.size() >= 1) {
-                int min = dataList.get(0);
-                for (Integer integer : dataList) {
-                    if (min >= integer) {
-                        min = integer;
-                    }
-                }
-                return min;
+            if (!helpStack.isEmpty()) {
+                return helpStack.peek();
             }
             return -1;
         }
-    }
-
-    public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        minStack.min();
-        minStack.pop();
-        minStack.top();
-        minStack.min();
     }
 }

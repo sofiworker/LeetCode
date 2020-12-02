@@ -1,5 +1,8 @@
 package me.sofiworker.sword.no55;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author sofiworker
  * @date 2020/8/14
@@ -17,21 +20,34 @@ public class Solution_1 {
     }
 
     public int maxDepth(TreeNode root) {
-//        return Math.max(root.left == null ? 0 : maxDepth(root.left),
-//                root.right == null ? 0 : maxDepth(root.right));
-        if (root == null) {
+        if(root == null) {
             return 0;
         }
-        return max(root);
+        int nLeft = maxDepth(root.left);
+        int nRight = maxDepth(root.right);
+        return nLeft > nRight ? nLeft + 1 : nRight + 1;
     }
 
-    private int max(TreeNode node) {
-        if (node.left != null) {
-            return 1 + max(node.left);
+    public int maxDepth1(TreeNode root) {
+        if(root == null) {
+            return 0;
         }
-        if (node.right != null) {
-            return 1 + max(node.right);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int depth = 0;
+        while(!queue.isEmpty()){
+            int curSize = queue.size();
+            for(int i = 0; i < curSize; i++){
+                TreeNode temp = queue.poll();
+                if(temp.left != null) {
+                    queue.add(temp.left);
+                }
+                if(temp.right != null) {
+                    queue.add(temp.right);
+                }
+            }
+            depth++;
         }
-        return 0;
+        return depth;
     }
 }
