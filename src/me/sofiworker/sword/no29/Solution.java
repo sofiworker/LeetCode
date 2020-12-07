@@ -7,32 +7,45 @@ package me.sofiworker.sword.no29;
 public class Solution {
 
     public int[] spiralOrder(int[][] matrix) {
-        if (matrix == null) {
+        if(matrix.length == 0) {
             return new int[0];
         }
-        int[] result = new int[matrix.length * matrix[0].length];
-        int row = matrix.length;
-        int col = matrix[0].length;
+        int l = 0;
+        int r = matrix[0].length - 1;
+        int t = 0;
+        int b = matrix.length - 1;
         int index = 0;
-        while (true) {
-            // 从左到右
-            for (int i = 0; i < col; i++) {
-                result[index++] = matrix[row][i];
+        int[] res = new int[(r + 1) * (b + 1)];
+        while(true) {
+            // 左到右
+            for(int i = l; i <= r; i++) {
+                res[index++] = matrix[t][i];
             }
-            // 从上到下
-            for (int j = 0; j < row; j++) {
-                result[index++] = matrix[j][col];
+            if(++t > b) {
+                break;
             }
-            // 从右到左
-            for (int k = col; k >= 0; k--) {
-                result[index++] = matrix[row][col];
+            // 上到下
+            for(int i = t; i <= b; i++) {
+                res[index++] = matrix[i][r];
             }
-            // 从下到上
-//            for (int l = ; ;) {
-//                result[index++] = matrix[row][col];
-//            }
-            break;
+            if(l > --r) {
+                break;
+            }
+            // 右到左
+            for(int i = r; i >= l; i--) {
+                res[index++] = matrix[b][i];
+            }
+            if(t > --b) {
+                break;
+            }
+            // 上到下
+            for(int i = b; i >= t; i--) {
+                res[index++] = matrix[i][l];
+            }
+            if(++l > r) {
+                break;
+            }
         }
-        return result;
+        return res;
     }
 }

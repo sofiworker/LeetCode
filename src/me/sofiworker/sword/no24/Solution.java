@@ -1,6 +1,9 @@
 package me.sofiworker.sword.no24;
 
+import java.time.LocalTime;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author sofiworker
@@ -70,5 +73,13 @@ public class Solution {
         }
         //返回新链表
         return newHead;
+    }
+
+    private static final Object LOCK = new Object();
+
+    static Thread main;
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread.currentThread().getState();
     }
 }
