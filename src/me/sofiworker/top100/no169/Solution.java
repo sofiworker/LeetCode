@@ -13,18 +13,25 @@ public class Solution {
         if (nums == null || nums.length == 0) {
             return 0;
         }
+        if (nums.length == 1) {
+            return nums[0];
+        }
         Map<Integer, Integer> map = new HashMap<>();
-        // TODO: 2020/12/7
         for (int num : nums) {
             Integer val = map.get(num);
             if (val == null) {
                 map.put(num, 1);
-            }else if (val > nums.length / 2) {
+                continue;
+            }
+            val++;
+            map.put(num, val);
+            if (map.get(num) > nums.length / 2) {
                 return num;
-            }else {
-                map.put(num, val++);
             }
         }
         return 0;
+
+//        Arrays.sort(nums);
+//        return nums[nums.length / 2];
     }
 }
