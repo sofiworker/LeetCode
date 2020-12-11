@@ -21,4 +21,19 @@ public class N10_1 {
         }
         return result[n-1];
     }
+
+    public int fib2(int n) {
+        if (n < 2) {
+            return n;
+        }
+        int x = 0;
+        int y = 1;
+        int z = 0;
+        for (int i = 1; i < n; i++) {
+            z = (x + y) % 1000000007;
+            x = y;
+            y = z;
+        }
+        return z;
+    }
 }
